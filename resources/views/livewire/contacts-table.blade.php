@@ -49,7 +49,7 @@
     </table>
 
     <div class="mt-4">
-        {{ $contacts->links('vendor.pagination.tailwind') }}
+        {{ $contacts->links('pagination::bootstrap-5') }}
     </div>
 
     {{-- Create/Edit Modal --}}

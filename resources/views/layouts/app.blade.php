@@ -19,7 +19,12 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- In <head> -->
     @livewireStyles
+
+    <!-- Just before </body> -->
+    @livewireScripts
+
 </head>
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
 
@@ -61,8 +66,8 @@
         © {{ date('Y') }} Livewire App
     </footer>
 </div>
-
-@livewireScripts
+@livewireScripts(['csrf' => true])
+@livewireStyles
 @stack('scripts')
 
 </body>
