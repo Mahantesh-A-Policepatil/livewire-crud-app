@@ -36,7 +36,7 @@
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->phone }}</td>
                 <td>
-                    <button wire:click="edit({{ $contact->id }})" class="btn btn-warning btn-sm">Edit</button>
+                    <button wire:click="edit({{ $contact->id }})" class="btn btn-success btn-sm">Edit</button>
                     <button wire:click="confirmDelete({{ $contact->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
@@ -48,7 +48,9 @@
         </tbody>
     </table>
 
-    {{ $contacts->links() }}
+    <div class="mt-4">
+        {{ $contacts->links('vendor.pagination.tailwind') }}
+    </div>
 
     {{-- Create/Edit Modal --}}
     <div wire:ignore.self class="modal fade" id="contactModal" tabindex="-1">
@@ -77,7 +79,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="resetForm">Cancel</button>
                         <button class="btn btn-success">Save</button>
                     </div>
                 </form>
@@ -91,7 +93,7 @@
             <div class="modal-content p-3 text-center">
                 <h5>Are you sure you want to delete this contact?</h5>
                 <div class="mt-3">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="cancelDelete">Cancel</button>
                     <button class="btn btn-danger" wire:click="delete">Yes, Delete</button>
                 </div>
             </div>
